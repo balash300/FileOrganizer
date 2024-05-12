@@ -1,5 +1,8 @@
 ﻿using System.Text;
-using System.Xml.Linq;
+
+using static ConsoleApp3.FileProperties;
+using static ConsoleApp3.Question;
+using static ConsoleApp3.Enums;
 
 namespace ConsoleApp3
 {
@@ -9,23 +12,17 @@ namespace ConsoleApp3
         {
             bool t = true;
             List<FileProperties> file = new List<FileProperties>();
+            FileExtension extension;
             int i = 1;
 
             while (t)
             {
                 Console.Write("\nDo you want to enter the file name yourself? (y/n): ");
                 string str1 = Console.ReadLine();
-
-                while (str1 != "y" && str1 != "n")
-                {
-                    Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine("Invalid Input");
-                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-                    Console.Write("Enter correct input: ");
-                    str1 = Console.ReadLine();
-                };
+                question1(str1);
 
                 string fileName;
+
                 if (str1.Equals("y"))
                 {
                     Console.Write("\nEnter file name: ");
@@ -43,32 +40,10 @@ namespace ConsoleApp3
 
                 Console.Write("File Extensions\n\n\t1-pdf\n\t2-exe\n\t3-txt\n\nEnter file extension: ");
                 string fileExtension = Console.ReadLine();
+                
 
-                while (fileExtension != "1" && fileExtension != "2" && fileExtension != "3")
-                {
-                    Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine("Invalid file extension");
-                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-                    Console.Write("Enter file extension: ");
-                    fileExtension = Console.ReadLine();
-                }
-
-                switch (fileExtension)
-                {
-                    case "1":
-                        fileExtension = "pdf";
-                        break;
-                    case "2":
-                        fileExtension = "exe";
-                        break;
-                    case "3":
-                        fileExtension = "txt";
-                        break;
-                    default:
-                        Console.WriteLine("Invalid file extension");
-                        break;
-                }
-
+                extension = (FileExtension)int.Parse(question2(fileExtension));
+                fileExtension = extension.ToString();
                 Console.WriteLine("\n--------------------------------------------------------------------");
 
 
@@ -78,15 +53,7 @@ namespace ConsoleApp3
                 {
                     Console.Write("\nDo you want to add information to the file? (y/n): ");
                     string inf = Console.ReadLine();
-
-                    while (inf != "y" && inf != "n")
-                    {
-                        Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                        Console.WriteLine("Invalid Input");
-                        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-                        Console.Write("Enter correct input: ");
-                        inf = Console.ReadLine();
-                    }
+                    question1(inf);
 
                     if (inf.Equals("n"))
                     {
@@ -108,15 +75,7 @@ namespace ConsoleApp3
                 Console.WriteLine("\n--------------------------------------------------------------------\n");
                 Console.Write("Exit the program (y/n): ");
                 string last = Console.ReadLine();
-
-                while (last != "y" && last != "n")
-                {
-                    Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine("Invalid Input");
-                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-                    Console.Write("Enter valid input: ");
-                    last = Console.ReadLine();
-                }
+                question1(last);
 
                 if (last.Equals("y"))
                 {
