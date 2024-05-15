@@ -8,11 +8,25 @@ namespace ConsoleApp3
 {
     internal class Enums
     {
-        public enum FileExtension
+        public enum FileType
         {
             pdf = 1,
-            exe = 2,
-            txt = 3
+            exe,
+            txt
+        }
+
+        public enum FontType
+        {
+            Arial = 1,
+            TimesNewRoman,
+            CourierNew,
+        }
+
+        public enum TechnologyType
+        {
+            Java = 1,
+            CSharp,
+            Python,
         }
     }
 }
