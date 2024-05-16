@@ -17,19 +17,14 @@ namespace ConsoleApp3
             Technologies = technologies;
         }
 
-        public virtual string GetExeFileDetails()
+        public override string GetFileDetails()
         {
-            return base.ToString() +
+            return base.GetFileDetails() +
                 "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" +
                 "\nEXE Specific Details:" +
                 $"\n\tArchitecture: {Architecture}" +
                 $"\n\tTechnologies: {Technologies}" +
                 "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-        }
-
-        public override string ToString()
-        {
-            return GetExeFileDetails();
         }
     }
 }

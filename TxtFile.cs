@@ -14,18 +14,13 @@ namespace ConsoleApp3
             FileContent = fileContent;
         }
 
-        public virtual string GetTxtFileDetails()
+        public override string GetFileDetails()
         {
-            return base.ToString() +
+            return base.GetFileDetails() +
                 "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" +
                 "\nTXT Specific Details:" +
                 $"\n\tFile Content: {FileContent}" +
                 "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-        }
-
-        public override string ToString()
-        {
-            return GetTxtFileDetails();
         }
     }
 }

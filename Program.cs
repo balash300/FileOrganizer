@@ -3,7 +3,6 @@
 using static ConsoleApp3.FileProperties;
 using static ConsoleApp3.QuestionHandler;
 using static ConsoleApp3.Enums;
-using static ConsoleApp3.PdfFile;
 using System.Runtime.InteropServices;
 
 namespace ConsoleApp3
@@ -13,7 +12,7 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
             bool t = true;
-            List<FileProperties> file = new List<FileProperties>();
+            List<FileProperties> files = new List<FileProperties>();
             FileType fileType;
             int i = 1;
             while (t)
@@ -47,7 +46,7 @@ namespace ConsoleApp3
                     fontInformation = fontType.ToString();
 
                     PdfFile pdfFile = new PdfFile(fileName, fontInformation);
-                    file.Add(pdfFile);
+                    files.Add(pdfFile);
                 }
                 else if (fileType == FileType.exe)
                 {
@@ -67,7 +66,7 @@ namespace ConsoleApp3
                     TechnologyType technologyType = (TechnologyType)int.Parse(ValidateNumericInput(technologies));
                     technologies = technologyType.ToString();
                     ExeFile exeFile = new ExeFile(fileName, architecture, technologies);
-                    file.Add(exeFile);
+                    files.Add(exeFile);
                 }
                 else if (fileType == FileType.txt)
                 {
@@ -91,8 +90,8 @@ namespace ConsoleApp3
                         }
                     }
                     TxtFile txtFile = new TxtFile(fileName, fileContent);
-                    file.Add(txtFile);
-                }                
+                    files.Add(txtFile);
+                }
                 Console.WriteLine("\n--------------------------------------------------------------------\n");
                 Console.Write("Exit the program (y/n): ");
                 string last = Console.ReadLine();
@@ -102,7 +101,7 @@ namespace ConsoleApp3
                     t = false;
                     Console.WriteLine("\n--------------------------------------------------------------------\n");
 
-                    foreach (var item in file)
+                    foreach (var item in files)
                     {
                         Console.WriteLine(item);
                     }

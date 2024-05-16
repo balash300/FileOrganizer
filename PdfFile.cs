@@ -11,18 +11,14 @@ namespace ConsoleApp3
             FontInformation = fontInformation;
         }
 
-        public virtual string GetPdfFileDetails()
+        public override string GetFileDetails()
         {
-            return base.ToString() +
+            return base.GetFileDetails() +
                 "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" +
                 "\nPDF Specific Details:" +
                 $"\n\tFont Information: {FontInformation}" +
                 "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
         }
 
-        public override string ToString()
-        {
-            return GetPdfFileDetails();
-        }
     }
 }
